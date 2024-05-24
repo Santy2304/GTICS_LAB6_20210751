@@ -29,9 +29,7 @@ public class WebSecurityConfig {
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception{
 
         http.formLogin()
-
                 .successHandler((request, response, authentication) -> {
-
                     HttpSession session = request.getSession();
                     session.setAttribute("usuario",usuarioRepository.findByCorreo(authentication.getName()));
 
@@ -76,7 +74,7 @@ public class WebSecurityConfig {
         JdbcUserDetailsManager jdbc = new JdbcUserDetailsManager(dataSource);
 
         String sql1 = "SELECT correo, password, activo FROM usuario where correo = ?";
-        String sql2 = "SELECT u.correo, r.autoridad FROM usuarios u INNER JOIN rol r ON (u.idrol = r.idrol) " +
+        String sql2 = "SELECT u.correo, r.autoridad FROM usuario u INNER JOIN rol r ON (u.idrol = r.idrol) " +
                 "WHERE u.correo = ?";
 
         jdbc.setUsersByUsernameQuery(sql1);

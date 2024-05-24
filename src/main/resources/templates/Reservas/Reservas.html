@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
+    <head th:replace="~{fragments/menu.html :: header( title = 'Reservas')}"></head>
+    <body>
+        <div class="container">
+            <nav th:replace="~{fragments/menu.html :: menu( active = 'Reservas')}"></nav>
+            <h2>Inventario de Dispositivos</h2>
+            <a sec:authorize="hasAnyAuthority('cliente')"  class="btn btn-primary mt-4 mb-4" th:href="@{'/cliente/new'}">Agregar Reserva</a>
+            <div th:if="${msg != null}" th:text="${msg}" class="alert alert-success" role="alert"></div>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Usuario</th>
+                        <th>Mesa</th>
+                        <th>Fecha Inicio</th>
+                        <th>Fecha Fin</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="reserva: ${listaReservas}">
+                        <td th:text="${reserva.idReserva}"></td>
+                        <td th:text="${reserva.idusuario.nombre}"></td>
+                        <td th:text="${reserva.idmesas.nombre}"></td>
+                        <td th:text="${reserva.getFechaInicio()}"></td>
+                        <td th:text="${reserva.fechaFin}"></td>
+                        <td><a sec:authorize="hasAnyAuthority('cliente')"  class="btn btn-primary" th:href="@{'/cliente/cancelar' + '?id=' + ${reserva.idReserva}}">Cancelar</a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </body>
+</html>

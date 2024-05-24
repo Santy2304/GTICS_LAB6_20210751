@@ -6,6 +6,8 @@ import lombok.Getter;
 import lombok.Setter;
 
 import java.time.Instant;
+import java.time.LocalDateTime;
+import java.util.Date;
 
 @Entity
 @Getter
@@ -20,11 +22,11 @@ public class Reserva {
 
     @NotNull
     @Column(name = "fechainicio", nullable = false)
-    private Instant fechaInicio;
+    private LocalDateTime fechaInicio;
 
     @NotNull
     @Column(name = "fechafin", nullable = false)
-    private Instant fechaFin;
+    private LocalDateTime fechaFin;
 
     @NotNull
     @ManyToOne

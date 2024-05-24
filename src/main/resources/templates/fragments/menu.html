@@ -19,10 +19,10 @@
                             <a th:href="@{../listaMesas}" class="nav-link active" aria-current="page">Mesas</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" sec:authorize="hasAnyAuthority('gerente')" th:classappend="${active == 'Todas las Reservas'?'active':''}">Todas las Reservas</a>
+                            <a th:href="@{/gerente/listaReservas}" class="nav-link" sec:authorize="hasAnyAuthority('gerente')" th:classappend="${active == 'Todas las Reservas'?'active':''}">Todas las Reservas</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" sec:authorize="hasAnyAuthority('cliente')" th:classappend="${active == 'Reservas'?'active':''}">Reservas</a>
+                            <a th:href="@{/cliente/listaReservas}" class="nav-link" sec:authorize="hasAnyAuthority('cliente')" th:classappend="${active == 'Reservas'?'active':''}">Reservas</a>
                         </li>
 
                         <div sec:authorize="isAnonymous()">
