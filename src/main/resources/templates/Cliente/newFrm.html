@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+    <head th:replace="~{fragments/menu.html :: header( title = 'NewReserva')}"></head>
+    <body>
+        <div class="container">
+            <nav th:replace="~{fragments/menu.html :: menu (active='Reservas')}"></nav>
+            <div class="row mb-4">
+                <div class="col-md-6 offset-md-3">
+                    <h2>Mesa</h2>
+
+                    <hr/>
+                    <form method="post" th:action="@{'/cliente/guardar'}" th:object="${reserva}">
+
+                        <input type="hidden" th:field="*{idReserva}">
+
+
+
+                        <div class="mb-3">
+                            <label class="form-label">Nombre</label>
+                            <input type="text" class="form-control" th:field="*{nombre}" th:classappend="${#fields.hasErrors('nombre')?'is-invalid':''}">
+                            <div class="invalid-feedback" th:if="${#fields.hasErrors('nombre')}" th:errors="*{nombre}"></div>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Ubicación</label>
+                            <input type="text" class="form-control" th:field="*{ubicacion}" th:classappend="${#fields.hasErrors('ubicacion')?'is-invalid':''}">
+                            <div class="invalid-feedback" th:if="${#fields.hasErrors('ubicacion')}" th:errors="*{ubicacion}"></div>
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label">Cantidad</label>
+                            <input type="text" class="form-control" th:field="*{cantidad}" th:classappend="${#fields.hasErrors('cantidad')?'is-invalid':''}">
+                            <div class="invalid-feedback" th:if="${#fields.hasErrors('cantidad')}" th:errors="*{cantidad}"></div>
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label">Disponible</label>
+                            <input type="text" class="form-control" th:field="*{disponible}" th:classappend="${#fields.hasErrors('disponible')?'is-invalid':''}">
+                            <div class="invalid-feedback" th:if="${#fields.hasErrors('disponible')}" th:errors="*{disponible}"></div>
+                        </div>
+
+                        <a th:href="@{'/admin/listaMesas'}" class="btn btn-danger">Cancelar</a>
+                        <button type="submit" class="btn btn-primary">Guardar</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
