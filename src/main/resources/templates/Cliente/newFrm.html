@@ -6,7 +6,7 @@
             <nav th:replace="~{fragments/menu.html :: menu (active='Reservas')}"></nav>
             <div class="row mb-4">
                 <div class="col-md-6 offset-md-3">
-                    <h2>Mesa</h2>
+                    <h2>Reserva</h2>
 
                     <hr/>
                     <form method="post" th:action="@{'/cliente/guardar'}" th:object="${reserva}">
@@ -15,21 +15,12 @@
 
 
 
-                        <div class="mb-3">
-                            <label class="form-label">Nombre</label>
-                            <input type="text" class="form-control" th:field="*{nombre}" th:classappend="${#fields.hasErrors('nombre')?'is-invalid':''}">
-                            <div class="invalid-feedback" th:if="${#fields.hasErrors('nombre')}" th:errors="*{nombre}"></div>
-                        </div>
-                        <div class="mb-3">
-                            <label class="form-label">Ubicación</label>
-                            <input type="text" class="form-control" th:field="*{ubicacion}" th:classappend="${#fields.hasErrors('ubicacion')?'is-invalid':''}">
-                            <div class="invalid-feedback" th:if="${#fields.hasErrors('ubicacion')}" th:errors="*{ubicacion}"></div>
-                        </div>
+
 
                         <div class="mb-3">
-                            <label class="form-label">Cantidad</label>
-                            <input type="text" class="form-control" th:field="*{cantidad}" th:classappend="${#fields.hasErrors('cantidad')?'is-invalid':''}">
-                            <div class="invalid-feedback" th:if="${#fields.hasErrors('cantidad')}" th:errors="*{cantidad}"></div>
+                            <label class="form-label">Fecha Inicio</label>
+                            <input type="text" class="form-control" th:field="*{fechaInicio}" th:classappend="${#fields.hasErrors('fechaInicio')?'is-invalid':''}">
+                            <div class="invalid-feedback" th:if="${#fields.hasErrors('fechaInicio')}" th:errors="*{fechaInicio}"></div>
                         </div>
 
                         <div class="mb-3">
